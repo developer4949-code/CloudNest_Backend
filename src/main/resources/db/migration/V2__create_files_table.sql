@@ -1,0 +1,10 @@
+CREATE TABLE files (
+    id BIGSERIAL PRIMARY KEY,
+    filename VARCHAR(255) NOT NULL,
+    s3_key VARCHAR(255) UNIQUE NOT NULL,
+    size BIGINT NOT NULL,
+    content_type VARCHAR(100),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    user_id BIGINT NOT NULL,
+    CONSTRAINT fk_file_user FOREIGN KEY (user_id) REFERENCES users(id)
+);
